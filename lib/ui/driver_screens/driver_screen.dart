@@ -113,9 +113,14 @@ class DriverScreen extends StatelessWidget {
                   ),
 
                   TextFormField(
-                    // controller: driverController.searchController,
+                    controller: driverController.searchController,
                     onChanged: (value) {
-                      driverController.filterSearch(value);
+                      if (driverController.searchController.text.isNotEmpty) {
+                        driverController.searchFromFireBase(value);
+                      } else {
+                        driverController.getDriverListData();
+                      }
+                      driverController.update();
                     },
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(20),
@@ -162,7 +167,7 @@ class DriverScreen extends StatelessWidget {
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemBuilder: (BuildContext context, int index) {
-                        String? amount = driverController.driverList[index].balance.toString();
+                        // String? amount = driverController.driverList[index].balance.toString();
                         //int balance = int.parse(amount.toString());
 
                         String name = driverController.driverList[index].driverName ?? '';

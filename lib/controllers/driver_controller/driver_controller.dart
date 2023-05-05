@@ -23,6 +23,7 @@ class DriverController extends GetxController {
   final amountController = TextEditingController();
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
+  final searchController = TextEditingController();
   RxBool isOpeningBalance = false.obs;
   RxBool driverExpenseLoading = false.obs;
   bool driverGaveGotBool = true;
@@ -110,7 +111,7 @@ class DriverController extends GetxController {
     });
   }
 
-  List driverList = <DriverModal>[];
+  List<DriverModal> driverList = <DriverModal>[];
   List seracgDriverList = <DriverModal>[];
   RxBool isDriverLoadingData = false.obs;
   Future<void> getDriverListData() async {
@@ -122,8 +123,8 @@ class DriverController extends GetxController {
       Map<String, dynamic>? map = drvList.data() as Map<String, dynamic>?;
 
       DriverModal modal = DriverModal.fromJson(map);
-      seracgDriverList.add(modal);
-      driverList = seracgDriverList;
+      driverList.add(modal);
+      //driverList = seracgDriverList;
     }
     isDriverLoadingData.value = true;
     update();
@@ -208,18 +209,30 @@ class DriverController extends GetxController {
     return updateModal.toJson();
   }
 
-  void filterSearch(String names) {
-    List results = [];
+  // void filterSearch(String names) {
+  //   List results = [];
+  //
+  //   if (names.isEmpty) {
+  //     results = seracgDriverList;
+  //     update();
+  //     Get.log("result products list ${results.length}");
+  //   } else {
+  //     results = seracgDriverList.where((element) => element.driverName!.toLowerCase().contains(names.toLowerCase())).toList();
+  //     update();
+  //   }
+  //   driverList = results.;
+  //   update();
+  // }
 
-    if (names.isEmpty) {
-      results = seracgDriverList;
-      update();
-      Get.log("result products list ${results.length}");
-    } else {
-      results = seracgDriverList.where((element) => element.driverName!.toLowerCase().contains(names.toLowerCase())).toList();
-      update();
-    }
-    driverList = results;
+  void searchFromFireBase(String searchName) async {
+    await fireStore.where("nameSearch", arrayContains: searchName).get().then((documents) {
+      driverList.clear();
+      documents.docs.forEach((doc) {
+        print(doc.id);
+        driverList.add(DriverModal.fromJson(doc.data()));
+      });
+    });
+
     update();
   }
 }

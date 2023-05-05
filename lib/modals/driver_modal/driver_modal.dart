@@ -10,14 +10,16 @@ class DriverModal {
   DriverModal({this.driverName, this.phoneNum, this.balance, this.createBy, this.driverId, this.createAt, this.negativeSign, this.nameSearch});
 
   factory DriverModal.fromJson(Map<String, dynamic>? json) => DriverModal(
-      driverName: json?["driverName"],
-      phoneNum: json?["phoneNum"],
-      balance: json?["balance"],
-      driverId: json?["driverId"],
-      createBy: json?["createBy"],
-      createAt: json?["createAt"] != null ? json!["createAt"].toDate() : json?["createAt"],
-      negativeSign: json?["negativeSign"],
-      nameSearch: json?["nameSearch"]);
+        driverName: json?["driverName"],
+        phoneNum: json?["phoneNum"],
+        balance: json?["balance"],
+        driverId: json?["driverId"],
+        createBy: json?["createBy"],
+        createAt: json?["createAt"] != null ? json!["createAt"].toDate() : json?["createAt"],
+        negativeSign: json?["negativeSign"],
+        // nameSearch: json?["nameSearch"],
+        nameSearch: json?["nameSearch"] == null ? [] : List<dynamic>.from(json?["nameSearch"]!.map((x) => x)),
+      );
 
   Map<String, dynamic> toJson() => {
         "driverName": driverName,
