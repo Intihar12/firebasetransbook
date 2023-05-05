@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "464390926448",
+    "project_id": "fir-transbook",
+    "storage_bucket": "fir-transbook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464390926448:android:315ae9d32bf6a4a31a84b5",
+        "android_client_info": {
+          "package_name": "com.example.firebasetransbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464390926448-fo8nhg1ec0fu3j8fh0ompo11ecmeiimb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebasetransbook",
+            "certificate_hash": "36ad082b4ef37c79050257779949eddf98b510ed"
+          }
+        },
+        {
+          "client_id": "464390926448-3n5q6vv0aucsv1mf99m3ka9hbbstqvbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBenUaKifa6U3Hdlj8wiwl5mTHPwUR9ARQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464390926448-3n5q6vv0aucsv1mf99m3ka9hbbstqvbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
